@@ -8,3 +8,9 @@ pub fn set_panic_hook() {
     #[cfg(feature = "console_error_panic_hook")]
     console_error_panic_hook::set_once();
 }
+
+pub fn init_log() {
+    #[cfg(feature = "console_log")]
+    use log::Level;
+    console_log::init_with_level(Level::Debug).expect("error initializing log");
+}
